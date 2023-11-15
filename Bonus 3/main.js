@@ -5,7 +5,8 @@
 //(prezzo moltiplicato per la quantità).
 //Utilizza la distrutturazione degli oggetti per estrarre le proprietà necessarie.
 //Quindi, registra il nome del prodotto e il suo valore totale.
-const products = [
+const response = 
+`[
     {
         "product": "Laptop",
         "price": 1200,
@@ -21,12 +22,16 @@ const products = [
         "price": 750,
         "quantity": 3
     }
-]
+]`;
 
-let Allproducts = '';
-for(i=0; i<products.length; i++) {
-    const {product, price, quantity} = products[i];
-    const multiply = price*quantity;
-    Allproducts += `Name: ${product} Total Value: ${multiply}`;
+const analizeJson = (json) => {
+    const products = JSON.parse(json);
+    for (i=0; i<products.length; i++){
+        const {product, price, quantity} = products[i];
+        const total = price * quantity;
+        console.log (`Il prezzo totale di ${product} è ${total}`);
+
+    }
+
 }
-console.log (Allproducts);
+analizeJson(response);

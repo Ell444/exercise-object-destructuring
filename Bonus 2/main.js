@@ -5,7 +5,8 @@
 //la funzione dovrebbe assegnare un valore predefinito di "Indirizzo non fornito".
 //Registra le informazioni estratte per ogni utente.
 
-const users = [
+const response = 
+`[
     {
         "name": "Alice",
         "email": "alice@example.com",
@@ -20,11 +21,17 @@ const users = [
         "email": "charlie@example.com",
         "address": "456 Via Olmo, Sognilandia"
     }
-]
+]`;
+
+const users = JSON.parse(response);
+
 const defaultAddress = 'Indirizzo non fornito';
-let userInformation = '';
-for (i=0; i<users.length; i++){
-    const {name, email, address: address = defaultAddress} = users[i];
-    userInformation += `Name: ${name}, Email: ${email}, Address: ${address}`
+
+const deconstructObj = ({name, email, address = defaultAddress}) => {
+    console.log (`Nome utente: ${name}, con email ${email} e vive ${address}`)
 }
-console.log (userInformation)
+
+for (let i = 0; i < users.length; i++) {
+    deconstructObj(users[i]);
+    
+}

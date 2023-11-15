@@ -4,7 +4,8 @@
 //e usa la distrutturazione degli oggetti per estrarre e registrare le seguenti informazioni per ogni libro: titolo, nome e cognome dell'autore,
 //e il numero di pagine se il libro ne ha più di 300.
 
-const books = [
+const response = `
+[
     {
         "title": "Il Grande Gatsby",
         "author": {
@@ -38,19 +39,23 @@ const books = [
             "language": "Inglese"
         }
     }
-]
+]`
 
 
-let registerBooks = '';
-for (let i=0; i<books.length; i++){
-    const {
-        title,
-        author: {firstName, lastName},
-        details:{pages}
-    } = books[i];
-    registerBooks += `Title: ${title}, author: ${firstName} ${lastName},
-    ${pages > 300 ? 'pages: ' + pages : ""}`;
+const books = JSON.parse(response);
 
-}
 
-console.log (registerBooks);
+const [
+{title: title1, author: {
+    firstName: firstName1,
+    lastName: lastName1,
+   }, details: {pages: pages1}},
+{title: title2, author: {
+    firstName: firstName2,
+    lastName: lastName2,
+}, details: {pages: pages2}},
+{title: title3, author: {
+    firstName: firstName3,
+    lastName: lastName3
+}, details: {pages: pages3}}
+] = books;
